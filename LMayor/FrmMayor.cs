@@ -142,16 +142,17 @@ namespace LMayor
             LimpiaBlancosEncab();
             paCuerpo.Enabled = true;
             paPie.Enabled = true;
+            txtCalcular.Text = "";
             CargaMayor();            
         }
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarControles();
         }
-        //todo: revisar que muestre el saldo
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
-            txtCalcular.Text = System.Convert.ToString(objLibro.saldoMayor);
+            objLibro.CalculaSaldo();
+            txtCalcular.Text = objLibro.saldoMayor.ToString("#,##0.00");
         }
         //todo: configurar botones importar y exportar
         private void BtnImportar_Click(object sender, EventArgs e)
