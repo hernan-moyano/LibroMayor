@@ -54,12 +54,14 @@
             this.txtCalcular = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.paSald = new System.Windows.Forms.Panel();
             this.paCabezera.SuspendLayout();
             this.paCarga.SuspendLayout();
             this.paCuerpo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVM)).BeginInit();
             this.paPie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.paSald.SuspendLayout();
             this.SuspendLayout();
             // 
             // paCabezera
@@ -127,10 +129,11 @@
             this.paCarga.Controls.Add(this.txtDebe);
             this.paCarga.Controls.Add(this.label5);
             this.paCarga.Controls.Add(this.txtDescripción);
+            this.paCarga.Dock = System.Windows.Forms.DockStyle.Right;
             this.paCarga.Enabled = false;
-            this.paCarga.Location = new System.Drawing.Point(303, 6);
+            this.paCarga.Location = new System.Drawing.Point(306, 0);
             this.paCarga.Name = "paCarga";
-            this.paCarga.Size = new System.Drawing.Size(649, 91);
+            this.paCarga.Size = new System.Drawing.Size(649, 100);
             this.paCarga.TabIndex = 13;
             // 
             // txtFecha
@@ -242,6 +245,7 @@
             this.DGVM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVM.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVM.Location = new System.Drawing.Point(93, 20);
             this.DGVM.Name = "DGVM";
@@ -251,21 +255,18 @@
             // paPie
             // 
             this.paPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(213)))), ((int)(((byte)(184)))));
-            this.paPie.Controls.Add(this.BtnCalcular);
+            this.paPie.Controls.Add(this.paSald);
             this.paPie.Controls.Add(this.BtnExportar);
             this.paPie.Controls.Add(this.BtnImportar);
-            this.paPie.Controls.Add(this.txtCalcular);
-            this.paPie.Controls.Add(this.label6);
             this.paPie.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.paPie.Enabled = false;
-            this.paPie.Location = new System.Drawing.Point(0, 411);
+            this.paPie.Location = new System.Drawing.Point(0, 391);
             this.paPie.Name = "paPie";
-            this.paPie.Size = new System.Drawing.Size(955, 100);
+            this.paPie.Size = new System.Drawing.Size(955, 120);
             this.paPie.TabIndex = 2;
             // 
             // BtnCalcular
             // 
-            this.BtnCalcular.Location = new System.Drawing.Point(680, 18);
+            this.BtnCalcular.Location = new System.Drawing.Point(83, 32);
             this.BtnCalcular.Name = "BtnCalcular";
             this.BtnCalcular.Size = new System.Drawing.Size(75, 47);
             this.BtnCalcular.TabIndex = 13;
@@ -296,16 +297,16 @@
             // txtCalcular
             // 
             this.txtCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCalcular.Location = new System.Drawing.Point(783, 44);
+            this.txtCalcular.Location = new System.Drawing.Point(186, 54);
             this.txtCalcular.Name = "txtCalcular";
             this.txtCalcular.ReadOnly = true;
-            this.txtCalcular.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcular.Size = new System.Drawing.Size(114, 20);
             this.txtCalcular.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(780, 18);
+            this.label6.Location = new System.Drawing.Point(183, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 13);
             this.label6.TabIndex = 1;
@@ -314,6 +315,17 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // paSald
+            // 
+            this.paSald.Controls.Add(this.BtnCalcular);
+            this.paSald.Controls.Add(this.label6);
+            this.paSald.Controls.Add(this.txtCalcular);
+            this.paSald.Dock = System.Windows.Forms.DockStyle.Right;
+            this.paSald.Location = new System.Drawing.Point(606, 0);
+            this.paSald.Name = "paSald";
+            this.paSald.Size = new System.Drawing.Size(349, 120);
+            this.paSald.TabIndex = 14;
             // 
             // FrmMayor
             // 
@@ -335,8 +347,9 @@
             this.paCuerpo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVM)).EndInit();
             this.paPie.ResumeLayout(false);
-            this.paPie.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.paSald.ResumeLayout(false);
+            this.paSald.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -368,6 +381,7 @@
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.TextBox txtCuenta;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Panel paSald;
     }
 }
 

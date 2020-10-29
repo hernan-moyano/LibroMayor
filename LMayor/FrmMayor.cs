@@ -17,8 +17,7 @@ namespace LMayor
         #region Constructores
         public FrmMayor()
         {
-            InitializeComponent();
-            //todo: leer xml desde el objLibro
+            InitializeComponent();            
             DGVM.DataSource = objLibro.tabla;
         }
         #endregion
@@ -126,22 +125,20 @@ namespace LMayor
             LimpiarControles();
             NuevaMayorización();
             paCarga.Enabled = false;
+            objLibro.tabla.Clear();
         }
         private void BtnSiguiente_Click(object sender, EventArgs e)
         {
             txtCuenta.Text = txtCuenta.Text.Trim();
             txtCuenta.Enabled = false;
             BtnSiguiente.Enabled = false;
-            paCarga.Enabled = true;
-            
+            paCarga.Enabled = true;            
         }
 
         private void BtnCargar_Click(object sender, EventArgs e)
-        {
-            
+        {            
             LimpiaBlancosEncab();
             paCuerpo.Enabled = true;
-            paPie.Enabled = true;
             txtCalcular.Text = "";
             CargaMayor();            
         }
@@ -154,15 +151,16 @@ namespace LMayor
             objLibro.CalculaSaldo();
             txtCalcular.Text = objLibro.saldoMayor.ToString("#,##0.00");
         }
-        //todo: configurar botones importar y exportar
+
         private void BtnImportar_Click(object sender, EventArgs e)
         {
-           // tabla.ReadXml(@"C:\Users\Sergio-Algorry\Desktop\lista.xml");
-         
+            objLibro.LeerTabla();
+            paCabezera.Enabled = true;
+            txtCalcular.Text = "";
         }
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            //tabla.WriteXml(@"C:\Users\Sergio-Algorry\Desktop\lista.xml");
+            objLibro.GrabarTabla();
         }
 
         //Validaciones de contenido en TextBox

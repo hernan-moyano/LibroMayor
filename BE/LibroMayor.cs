@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -36,10 +37,8 @@ namespace BE
             tabla.Rows[tabla.Rows.Count - 1][1] = objFila.Descripción;
             tabla.Rows[tabla.Rows.Count - 1][2] = objFila.Debe;
             tabla.Rows[tabla.Rows.Count - 1][3] = objFila.Haber;
-            //todo: grabar en xml
+            GrabarTabla();
         }
-        //todo: agregar metodo leer xml
-
 
         public void CalculaSaldo()         
         {
@@ -54,6 +53,16 @@ namespace BE
             }
             saldo = deacum - habacum;
             saldoMayor = saldo;
+        }
+
+        public void LeerTabla()
+        {
+            tabla.ReadXml(@"lista.xml");
+        }
+
+        public void GrabarTabla()
+        {
+            tabla.WriteXml(@"lista.xml");
         }
 
         #endregion
