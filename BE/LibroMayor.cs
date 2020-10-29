@@ -13,7 +13,7 @@ namespace BE
     public class LibroMayor
     {
         #region propiedades        
-        public decimal saldoMayor= 0M;        
+        public decimal saldoMayor= 0;        
         public DataTable tabla = new DataTable();
         #endregion
 
@@ -21,10 +21,12 @@ namespace BE
         public LibroMayor()
         {
            tabla.TableName = "Lista";
+           tabla.Columns.Add("Cuenta", typeof(string));
            tabla.Columns.Add("Fecha", typeof(DateTime));
            tabla.Columns.Add("Descripción", typeof(string));
            tabla.Columns.Add("Debe", typeof(decimal));
            tabla.Columns.Add("Haber", typeof(decimal));
+           tabla.Columns.Add("Saldo", typeof(decimal));
 
         }
         #endregion
@@ -33,26 +35,27 @@ namespace BE
         public void CargarTabla(Asiento objFila)
         {           
             tabla.Rows.Add();
-            tabla.Rows[tabla.Rows.Count - 1][0] = objFila.Fecha;
-            tabla.Rows[tabla.Rows.Count - 1][1] = objFila.Descripción;
-            tabla.Rows[tabla.Rows.Count - 1][2] = objFila.Debe;
-            tabla.Rows[tabla.Rows.Count - 1][3] = objFila.Haber;
-            GrabarTabla();
+            tabla.Rows[tabla.Rows.Count - 1][0] = objFila.Cuenta;
+            tabla.Rows[tabla.Rows.Count - 1][1] = objFila.Fecha;
+            tabla.Rows[tabla.Rows.Count - 1][2] = objFila.Descripción;
+            tabla.Rows[tabla.Rows.Count - 1][3] = objFila.Debe;
+            tabla.Rows[tabla.Rows.Count - 1][4] = objFila.Haber;
+            CalculaSaldo();
+            tabla.Rows[tabla.Rows.Count - 1][5] = saldoMayor;
         }
 
         public void CalculaSaldo()         
         {
-            decimal saldo = 0M;
-            decimal deacum = 0M;
-            decimal habacum = 0M;
+            decimal deacum = 0;
+            decimal habacum = 0;
 
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
-                deacum = deacum + System.Convert.ToInt32(tabla.Rows[i][2]) ;
-                habacum = habacum + System.Convert.ToInt32(tabla.Rows[i][3]);                
+                deacum = deacum + System.Convert.ToDecimal(tabla.Rows[i][3]) ;
+                habacum = habacum + System.Convert.ToDecimal(tabla.Rows[i][4]);                
             }
-            saldo = deacum - habacum;
-            saldoMayor = saldo;
+            saldoMayor = deacum - habacum;
+            GrabarTabla();
         }
 
         public void LeerTabla()

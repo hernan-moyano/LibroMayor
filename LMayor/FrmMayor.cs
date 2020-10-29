@@ -19,6 +19,8 @@ namespace LMayor
         {
             InitializeComponent();            
             DGVM.DataSource = objLibro.tabla;
+            DGVM.Columns[0].Visible = false;
+            DGVM.Columns[5].Visible = false;
         }
         #endregion
 
@@ -154,13 +156,29 @@ namespace LMayor
 
         private void BtnImportar_Click(object sender, EventArgs e)
         {
-            objLibro.LeerTabla();
-            paCabezera.Enabled = true;
-            txtCalcular.Text = "";
+            try
+            {
+                objLibro.LeerTabla();
+                paCabezera.Enabled = true;
+                txtCalcular.Text = "";
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Error:\r\n" + ee.Message);
+            }
+
         }
         private void BtnExportar_Click(object sender, EventArgs e)
         {
-            objLibro.GrabarTabla();
+            try
+            {
+                objLibro.GrabarTabla();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Error:\r\n" + ee.Message);
+            }
+            
         }
 
         //Validaciones de contenido en TextBox
